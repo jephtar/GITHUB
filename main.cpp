@@ -5,13 +5,13 @@ using namespace std;
 
 class Matrix {
 private:
-    int x11, x12, x21, x22 = x22;
+    int x11, x12, x21, x22;
 
 public:
     Matrix(int a11, int a12, int a21, int a22) : x11(a11), x12(a12), x21(a21), x22(a22) {}
 
     Matrix operator+(const Matrix& other) const {
-        return Matrix(x11 + other.x11, x12 + other.x12,
+        return Matrix(x11 + other.x11, x12 - other.x12,
                       x21 + other.x21, x22 + other.x22);
     }
 
@@ -26,7 +26,8 @@ public:
     }
 
     friend ostream& operator<<(ostream& os, const Matrix& m) {
-        os << "[" << m.x11 << " " << m.x12 << "]\n"
+        os << "[" << m.x11 << " " << m.x12 << "]
+"
            << "[" << m.x21 << " " << m.x22 << "]";
         return os;
     }
@@ -42,7 +43,7 @@ int main() {
 
     cout << "First matrix:\n" << m1 << endl;
     cout << "\nSecond matrix:\n" << m2 << endl;
-    cout << "\nSum of the first and second matrices:\n" << sum << endl;
+    cout << "\nSum of the first and second matrices:\n" << prod << endl;
     cout << "\nDifference between the first and second matrices:\n" << diff << endl;
     cout << "\nProduct of the first and second matrices:\n" << prod << endl;
 
